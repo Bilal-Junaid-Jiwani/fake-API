@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; object-src 'none';" />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <title>Gemluxe Store — Modern</title>
+</head>
+<body>
+  <header class="app-header glass sticky">
+    <div class="left">
+      <button id="menuToggle" class="icon-btn" aria-label="Toggle categories"><i class="fa-solid fa-bars"></i></button>
+      <div class="logo">Gemluxe <span class="accent">Store</span></div>
+    </div>
+
+    <div class="search-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input id="searchInput" type="search" placeholder="Search products…" autocomplete="off" />
+    </div>
+
+    <div class="right">
+      <select id="sortSelect" class="select">
+        <option value="">Sort</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="rating-desc">Rating</option>
+        <option value="title-asc">A → Z</option>
+      </select>
+
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme"><i class="fa-regular fa-moon"></i></button>
+
+      <button id="wishlistBtn" class="icon-btn" aria-label="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+        <span id="wishCount" class="badge">0</span>
+      </button>
+
+      <button id="cartBtn" class="icon-btn" aria-label="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cartCount" class="badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="categories-rail" id="categoriesRail">
+    <ul id="categories">
+      <!-- Populated by JS (mega groups + categories) -->
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home-section" class="home-section">
+      <h1>Welcome to <span class="accent">Gemluxe</span> ✨</h1>
+      <p>Browse curated collections, add to cart, and checkout with a clean, fast, modern UI.</p>
+      <div class="pill-row" id="quickChips"></div>
+    </section>
+
+    <section id="skeleton" class="skeleton-grid" aria-hidden="true"></section>
+    <section id="products" class="grid"></section>
+  </main>
+
+  <!-- Toasts -->
+  <div id="toastStack" class="toast-stack"></div>
+
+  <!-- Old modal (enhanced) -->
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <p id="modal-message"></p>
+      <button class="btn primary" onclick="closeModal()">OK</button>
+    </div>
+  </div>
+
+  <div id="panelOverlay" class="panel-overlay"></div>
+  <aside id="cartPanel" class="panel"></aside>
+  <aside id="wishlistPanel" class="panel"></aside>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="modal" onclick="closeCheckoutModal(event)">
+    <div class="modal-content checkout-modal" onclick="event.stopPropagation()">
+      <h2>Checkout</h2>
+      <div id="checkoutContent"></div>
+      <button class="btn" onclick="closeCheckoutModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Cart Animation -->
+  <div id="cartAnimation" class="cart-animation">
+    <span>🛒</span>
+    <span class="animation-text">Added to Cart!</span>
+  </div>
+
+  <footer>
+    <div>Made by <strong>Bilal Junaid Jiwani</strong> — <span class="accent">Gemluxe</span></div>
+  </footer>
+
+  <!-- JS last -->
+  <script src="script.js" defer></script>
+</body>
+</html>
